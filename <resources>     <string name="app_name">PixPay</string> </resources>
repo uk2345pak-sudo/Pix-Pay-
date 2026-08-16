@@ -1,0 +1,74 @@
+ (Node + Express)
+
+server/package.json
+
+{ "name": "pixpay-moderation-admin", "version": "1.0.0", "description": "Admin webhook to process moderation_queue and apply bans in Firestore", "main": "index.js", "scripts": { 
+
+server/index.js
+
+/** * PixPay Admin Webhook * * - Processes moderation_queue entries and applies bans to banned_accounts. * - Uses Firestore transactions for atomic updates. * 
+
+server/README.md
+
+# PixPay Moderation Admin Webhook This small Express app processes moderation_queue entries in Firestore and applies bans in banned_accounts. ## Setup 
+
+Files — Android (production AdMob IDs)
+
+Note: I replaced the previous test AdMob IDs with your supplied production Ad Unit IDs. Use these in your release build. Keep using Google test IDs during development to avoid invalid traffic.
+
+AndroidManifest.xmlv3
+
+<?xml version="1.0" encoding="utf-8"?> <manifest xmlns:android="http://schemas.android.com/apk/res/android" package="com.pixpay.app"> <uses-permission android:name="android.permission.INTERNET" /> <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" /> 
+
+res/values/strings.xmlv3
+
+<?xml version="1.0" encoding="utf-8"?> <resources> <string name="app_name">PixPay</string> <!-- PRODUCTION AdMob App ID (example you provided) --> <string name="admob_app_id">ca-app-pub-6669767357053934~6174575389</string> 
+
+src/main/java/com/pixpay/app/MainActivity.javav3
+
+package com.pixpay.app; import android.content.Context; import android.os.Bundle; import android.os.VibrationEffect; import android.os.Vibrator; 
+
+Final notes and recommended next steps
+
+Deploy the admin webhook to Cloud Run (or another secure host). Protect access with IAM or a strong auth layer — the ADMIN_SECRET alone is insufficient in production.Use the admin webhook to process moderation_queue docs that your app or server enqueues. After you process and ban, the client checks banned_accounts via FirebaseModerationService.isAccountBanned().Make sure your Firestore security rules allow only trusted backends/admins to write to banned_accounts and to process moderation_queue entries.Before publishing to the Play Store:Ensure your privacy policy is up-to-date and accurately describes moderation, data storage, appeals, and any identifiers stored.Use real authentication flows for users (email/phone/OAuth), and avoid anonymous accounts for enforcement-critical actions.When testing, use test AdMob IDs. Switch to the production IDs in your release build (the MainActivity provided already references production constants as requested).
+
+If you want, I can:
+
+Convert the webhook into a Cloud Function or show a Cloud Run Dockerfile and deployment steps.Add example Firestore security rules for moderation_queue, banned_accounts, and appeals.Create a minimal admin UI (React) to review moderation_queue entries and execute the process endpoints.
+
+Which of those should I do next?
+
+Thank you! Everything looks complete. Please commit all code files to the main branch so GitHub Actions can build the APK 
+
+I can commit these files, but I need the target GitHub repository and permission before I run the commit.
+
+Please provide:
+
+Repository owner/name (in owner/repo format), e.g. my-org/pixpay-app.Confirm you want the changes committed directly to the main branch (you asked for main). If you prefer a feature branch and a PR instead, say so (recommended for production).Confirm you have granted me write access to that repository (or confirm this account may push to it).
+
+What I will commit (paths I will create/update)
+
+Android app:AndroidManifest.xml (app/)app/src/main/res/layout/activity_main.xmlapp/src/main/res/values/strings.xmlapp/src/main/res/values/colors.xmlapp/src/main/java/com/pixpay/app/MainActivity.javaapp/src/main/java/com/pixpay/app/ModerationManager.javaapp/src/main/java/com/pixpay/app/FirebaseModerationService.javaapp/src/main/java/com/pixpay/app/MonetizationManager.javaapp/BUILD_NOTES.mdServer (admin webhook):server/package.jsonserver/index.jsserver/README.md
+
+If that list looks right, reply with the repo (owner/repo) and whether to commit directly to main or create branch + PR. Once you confirm, I will commit the files to the specified branch and report back with the commit details (or any errors).
+
+Create a random joke generator using an external API.
+
+Short answer: Below are two ready-to-use implementations of a random joke generator that use an external API (JokeAPI). One is a single-file static web page (HTML + JS) that calls the JokeAPI directly (easy to drop into any static site). The other is a small Node.js/Express proxy server that fetches jokes server-side (useful to avoid CORS, add caching or moderation, or hide additional server logic). Both examples use filters to avoid NSFW/explicit content by default.
+
+Pick the one you want to use; both are ready-to-run.
+
+Simple static page (client-side fetch)Opens directly in a browser. No build step.
+
+index.html
+
+<!doctype html> <html lang="en"> <head> <meta charset="utf-8" /> <meta name="viewport" content="width=device-width,initial-scale=1" /> <title>Random Joke Generator</title> 
+
+Message interrupted
+
+Copilot was interrupted before it could finish this message.
+
+
+<resources>
+    <string name="app_name">PixPay</string>
+</resources>
